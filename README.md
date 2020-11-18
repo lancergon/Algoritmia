@@ -1,2 +1,2 @@
 # Algoritmia
-Pruebas de
+Pruebas de algoritmia
