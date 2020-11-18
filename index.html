@@ -1,0 +1,285 @@
+<html ng-app="app">
+<style>
+</style>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- <base href="/"> -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<!-- <link rel="stylesheet" href="src/WebUIPopover/jquery.webui-popover.min.css"> -->
+	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="lib/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script src="lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="lib/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+	<script src="lib/angular/angular.min.js" type="text/javascript"></script>
+	<script src="lib/angular/angular-resource.min.js" type="text/javascript"></script>
+	<script src="lib/angular/angular-locale_es-mx.min.js" type="text/javascript"></script>
+	<script src="lib/angular/angular-ui-router.min.js" type="text/javascript"></script>
+	<script src="lib/angular/angular-utf8-base64.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" href="lib/bootstrap-datepicker/css/bootstrap-datepicker.css">
+	<!-- <script src="src/WebUIPopover/jquery.webui-popover.min.js"></script> -->
+	<script src="js/index.js" type="text/javascript"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/ui/trumbowyg.min.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+</head>
+<body style="background-color:white;">
+<br><br>
+
+        <br>
+        <br>
+        <br>
+        <br>
+<div ng-controller="PrincipalPagController as PrinpalPagCtrl" style="margin: 100px">
+
+  <div ng-show="PrinpalPagCtrl.Cargando">
+    <h1>
+      Creando arboles 
+      Insertando 10,000 datos tarda aproximadamente 5 min
+    </h1>
+  </div>
+  <div ng-hide="PrinpalPagCtrl.Cargando">
+
+    <center>
+      <input class="btn btn-default" type="button" value="Marcas" ng-click="PrinpalPagCtrl.MarcasHide()">
+      <input class="btn btn-default" type="button" value="Usuarios" ng-click="PrinpalPagCtrl.UsuariosHide()">
+      <input class="btn btn-default" type="button" value="Encuesta" ng-click="PrinpalPagCtrl.EncuestaHide()">
+      <input class="btn btn-default" type="button" value="Ventas" ng-click="PrinpalPagCtrl.VentaHide()">
+      <input class="btn btn-default" type="button" value="Grafica" ng-click="PrinpalPagCtrl.GragicaHide()">
+      <input class="btn btn-default" type="button" value="Grifo" ng-click="PrinpalPagCtrl.GrifoShow()">
+    </center>
+    <div ng-hide="PrinpalPagCtrl.Grifo">
+      <div class="row">
+        <form class="navbar-form navbar-left">
+          <div class="input-group">
+           <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.mostrarGrafo();">
+            <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+          </div>
+        </form>
+      </div>
+      <div ng-repeat="minimo in PrinpalPagCtrl.mostrarGrafoTroso"    style = "float: left" class="col-sm-2">
+        <span   class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" >{{minimo}}</span>
+      </div>
+    </div>
+   
+    <div ng-hide="PrinpalPagCtrl.Marcas">
+      <div class="row">
+        <form class="navbar-form navbar-left">
+          <div class="input-group">
+           <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.LoadData();">
+            <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+          </div>
+        </form>
+            <div class="input-group-prepend">
+              <button   type="button" class="input-group-text" id="inputGroup-sizing-sm" style=" margin-top:10px" ng-click="PrinpalPagCtrl.RandomIndo(0)">Random</button>
+              <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.SaveDataNew('Informacion.json')">agragar</button>
+            </div>
+      </div>
+    <div class="input-group input-group-sm mb-3">
+  
+    <div ng-repeat="Datos in PrinpalPagCtrl.PageInicio">
+      <button   type="button" class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px"ng-click="PrinpalPagCtrl.guardar(Datos,'Informacion.json')">guardar</button>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">ID</span>
+      <span class="input-group-addon" id="basic-addon1">{{Datos.ID}}</span>
+  
+      <span class="input-group-addon" id="basic-addon1">Marca</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style=" margin:0px 20px 0px 0px " ng-model="Datos.Nombre">
+  
+  
+     <span class="input-group-addon" id="basic-addon1">Cost</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style=" margin:0px 20px 0px 0px " ng-model="Datos.Cost">
+  
+  
+      <span class="input-group-addon" id="basic-addon1">Venta</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style=" margin:0px 20px 0px 0px " ng-model="Datos.Venta">
+    
+    </div>
+     <br><br>
+      </div>
+      </div>
+     </div>
+  
+    <div ng-hide="PrinpalPagCtrl.Usuarios">
+      <div class="row">
+        <form class="navbar-form navbar-left">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.LoadDataUsuario();">
+            <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+          </div>
+        </form>
+            <div class="input-group-prepend">
+              <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.RandomUsuarios(0)">Random</button>
+              <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.SaveDataNew('Clientes.json')">agragar</button>
+            </div>
+      </div>
+  
+    <div ng-repeat="Datos in PrinpalPagCtrl.ArrayClientes">
+      <button   type="button" class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" ng-click="PrinpalPagCtrl.guardar(Datos,'Clientes.json')">guardar</button>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">ID</span>
+      <span class="input-group-addon" id="basic-addon1">{{Datos.ID}}</span>
+  
+      <span class="input-group-addon" id="basic-addon1">Usuario</span>
+      <input type="text" class="form-control" aria-label="Sizing example input"   style=" margin:0px 20px 0px 0px " aria-describedby="inputGroup-sizing-sm" ng-model="Datos.Nombre">
+    </div>
+    <br><br>
+    </div>
+  
+  </div>
+  
+  
+  
+  
+   
+  <div ng-hide="PrinpalPagCtrl.Encuesta">
+    <div class="row">
+      <form class="navbar-form navbar-left">
+        <div class="input-group">
+          <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.LoadDataEncuesta();">
+          <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+        </div>
+      </form>
+          <div class="input-group-prepend">
+            <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.RandomIndoEncuesta()">Random</button>
+            <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.SaveDataNew('Encuesta.json')">agragar</button>
+          </div>
+      </div>  
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Ordenar <span class="caret" ng-model="PrinpalPagCtrl.Cantidad"></span></button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('Grado','Encuesta')">Grado</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('ID','Encuesta')">ID</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+            <input type="text" class="form-control" aria-label="..." ng-model="PrinpalPagCtrl.Ordenar" ng-change="PrinpalPagCtrl.LoadDataEncuesta()">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div>   
+  
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="PrinpalPagCtrl.BuscararrbolEncuesta()">Buscar Grado</button>
+            </div><!-- /btn-group -->
+            <input type="text" class="form-control" aria-label="..." ng-model="PrinpalPagCtrl.Buscar">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div>
+  
+  <div ng-repeat="Datos in PrinpalPagCtrl.ArrayEncuesta">
+    <button   type="button" class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" ng-click="PrinpalPagCtrl.guardar(Datos,'Encuesta.json')">guardar</button>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">ID</span>
+    <span class="input-group-addon" id="basic-addon1">{{Datos.ID}}</span>
+  
+    <span class="input-group-addon" id="basic-addon1">Grado</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.Grado">
+  
+    <span class="input-group-addon" id="basic-addon1">Fecha</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.Fecha">
+  </div>
+  <br><br>
+  </div>
+  
+  
+  </div>
+  
+  <div ng-hide="PrinpalPagCtrl.Ventas">
+    <div class="row">
+      <form class="navbar-form navbar-left">
+        <div class="input-group">
+          <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.LoadDataVenta();">
+          <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+        </div>
+      </form>
+          <div class="input-group-prepend">
+            <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.RandomVenta()">Random</button>
+            <button   type="button" class="input-group-text" id="inputGroup-sizing-sm"  style=" margin-top:10px" ng-click="PrinpalPagCtrl.SaveDataNew('Venta.json')">agragar</button>
+          </div>
+    </div> 
+      <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Ordenar</button>
+            <ul class="dropdown-menu">
+              <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('Cost','Venta')">Cost</a></li>
+              <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('Venta','Venta')">Venta</a></li>
+              <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('IDCliente','Venta')">IDCliente</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a ng-click="PrinpalPagCtrl.OrdenarCotroler('ID','Venta')">ID</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <input type="text" class="form-control" aria-label="..." ng-model="PrinpalPagCtrl.Ordenar" ng-change="PrinpalPagCtrl.LoadDataVenta()">
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div> 
+  
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="PrinpalPagCtrl.Buscararrbol()">Buscar</button>
+          </div><!-- /btn-group -->
+          <input type="text" class="form-control" aria-label="..." ng-model="PrinpalPagCtrl.Buscar">
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div>
+      
+  
+  <div ng-repeat="Datos in PrinpalPagCtrl.ArrayVenta">
+    <button   type="button" class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" ng-click="PrinpalPagCtrl.guardar(Datos,'Venta.json')">guardar</button>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">ID</span>
+    <span class="input-group-addon" id="basic-addon1">{{Datos.ID}}</span>
+  
+    <span class="input-group-addon" id="basic-addon1">IDCliente</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.IDCliente">
+  
+    <span class="input-group-addon" id="basic-addon1">IDArtirculo</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.IDArtirculo">
+  
+    <span class="input-group-addon" id="basic-addon1">Cost</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.Cost">
+  
+    <span class="input-group-addon" id="basic-addon1">Venta</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" ng-model="Datos.Venta">
+  </div>
+  <br><br>
+  </div>
+  </div>
+  <div ng-hide="PrinpalPagCtrl.Grafica">
+    <canvas id="myChart"></canvas>
+    <script src="lib/chart.js"></script>
+  
+  </div>
+  
+  </div>
+  </div>
+
+  <script src="controllers/ArbolAVL.js"></script>
+  <script src="controllers/ArbolAVLEncuesta.js"></script>
+	<script src="controllers/PrincipalPagCtrl.js"></script>
+  <script src="controllers/MainCtrl.js"></script>
+ 
+</body>
+</html>

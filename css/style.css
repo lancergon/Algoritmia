@@ -1,0 +1,132 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 30px;
+  /*font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;*/
+  font-family: "Segoe UI",Arial,sans-serif;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  line-height: 30px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+.DIDropDown{
+   /* 6px 11px */
+	padding: 8px 9px !important;
+	text-align: center;
+  cursor: pointer;
+  min-height: 49px;
+}
+
+.DIDropDownInverse{
+  display: none !important;
+}
+
+.DIDropDownSub{
+    cursor: pointer;
+}
+
+.DITitle{
+  margin: 5px 0px 5px 0px;
+}
+
+.DITabButton{
+  padding: 8px;
+}
+
+.DINL{
+  display: list-item;
+}
+
+.DIMenuIconCollapse{
+  display: list-item;
+}
+
+.DITable{
+  font-size: 12px;
+  margin: 0;
+}
+
+.DIth{
+  padding: 3px !important;
+  text-align: center;
+}
+
+.DItd{
+  padding: 3px !important;
+}
+
+.DITableCellCentered{
+  text-align: center;
+}
+
+.DITableCellRight{
+  text-align: right;
+}
+
+.DIBold{
+  font-weight: bold;
+}
+
+.CBInHiddenLink:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.disabled {
+    pointer-events:none;
+    opacity:0.6;
+}
+
+
+
+@media(max-width: 767px){
+
+  .DIDropDown{
+    /* 6px 11px */
+    padding: 5px 9px !important;
+    text-align: left;
+    /* cursor: pointer; */
+    min-height: 16px;
+  }
+
+  .DIDropDownInverse{
+    padding: 5px 9px !important;
+    text-align: left;
+    cursor: pointer;
+    min-height: 16px;
+    display: list-item !important;
+  }
+
+  .DINL{
+    display: none;
+  }
+
+  .DIMenuIconCollapse{
+    display: none !important;
+  }
+
+}
+
+.indicadorError{
+  background-color: rgba(236, 20, 20, 0.22) !important;
+  /*border-color:rgb(210, 21, 89);*/
+}
+
+/*.indicadorError{
+  /*background-color: rgba(236, 20, 20, 0.22);
+  border-color:rgb(210, 21, 89)!important;
+}
+*/
+.backgroundWhite{
+  background-color: white;
+}
+
