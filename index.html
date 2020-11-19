@@ -61,19 +61,6 @@
       <input class="btn btn-default" type="button" value="Grafica" ng-click="PrinpalPagCtrl.GragicaHide()">
       <input class="btn btn-default" type="button" value="Grifo" ng-click="PrinpalPagCtrl.GrifoShow()">
     </center>
-    <div ng-hide="PrinpalPagCtrl.Grifo">
-      <div class="row">
-        <form class="navbar-form navbar-left">
-          <div class="input-group">
-           <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.mostrarGrafo();">
-            <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
-          </div>
-        </form>
-      </div>
-      <div ng-repeat="minimo in PrinpalPagCtrl.mostrarGrafoTroso"    style = "float: left" class="col-sm-2">
-        <span   class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" >{{minimo}}</span>
-      </div>
-    </div>
    
     <div ng-hide="PrinpalPagCtrl.Marcas">
       <div class="row">
@@ -272,7 +259,19 @@
     <script src="lib/chart.js"></script>
   
   </div>
-  
+   <div ng-hide="PrinpalPagCtrl.Grifo">
+    <div class="row">
+      <form class="navbar-form navbar-left">
+        <div class="input-group">
+         <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-sm" ng-model="PrinpalPagCtrl.Cantidad"  onchange="vmSitioWebController.mostrarGrafo();">
+          <span class="input-group-addon" id="basic-addon1">{{PrinpalPagCtrl.CMostrar}}</span>
+        </div>
+      </form>
+    </div>
+    <div ng-repeat="minimo in PrinpalPagCtrl.mostrarGrafoTroso"    style = "float: left">
+      <span   class="input-group-text" id="inputGroup-sizing-sm" style=" margin:10px" >{{minimo}}</span>
+    </div>
+  </div>
   </div>
   </div>
 

@@ -62,9 +62,7 @@ var app = angular.module("app").controller("PrincipalPagController", function($s
             vm.Ventas=true;
             vm.Grafica=true;
             vm.Grifo=false;
-            if(vm.GrifoMinimo==null){
-                vm.LLenarrbolKruskal();
-            }
+       
     }
 
     vm.OrdenarCotroler=function(como,donde){
@@ -486,6 +484,7 @@ var app = angular.module("app").controller("PrincipalPagController", function($s
 
                     vm.ArrayVenta=vm.ArrayVenta.concat(vm.arbolDerechoArt.search(vm.Buscar));
                 }
+                console.log("grafo");
                 console.log(vm.ArrayVenta);
             }
         }
@@ -505,6 +504,8 @@ var app = angular.module("app").controller("PrincipalPagController", function($s
                     vm.arbolIzquierdoEnc.add(response.data[i]);
                
                 }
+                console.log("grafo");
+                vm.LLenarrbolKruskal();
             })
         }
 
@@ -634,5 +635,4 @@ var app = angular.module("app").controller("PrincipalPagController", function($s
         vm.LoadDataVenta();
         vm.LLenarrbolArticulo();
          vm.LLenarrbolEncuesta();
-        
 });
